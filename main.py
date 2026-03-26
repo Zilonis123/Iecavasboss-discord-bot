@@ -16,6 +16,7 @@ TRUSTED_USERS = set(
 
 # ── Bot Setup ─────────────────────────────────────────────────────────────────
 intents = discord.Intents.default()
+intents.members = True
 intents.message_content = True
 intents.voice_states    = True
 

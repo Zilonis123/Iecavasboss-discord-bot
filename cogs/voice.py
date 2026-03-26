@@ -130,9 +130,9 @@ class Voice(commands.Cog):
         medals = ["🥇", "🥈", "🥉"]
         lines  = []
         for i, (uid, secs) in enumerate(sorted_users):
-            m    = ctx.guild.get_member(uid)
+            m = ctx.guild.get_member(uid)
             name = m.display_name if m else f"Unknown ({uid})"
-            live = "🔴 " if uid in voice_sessions else ""
+            live = "🟢 " if uid in voice_sessions else "🔴 "
             medal = medals[i] if i < 3 else f"`{i + 1}.`"
             lines.append(f"{medal} {live}**{name}** — {format_duration(secs)}")
 
@@ -142,7 +142,7 @@ class Voice(commands.Cog):
             color=discord.Color.blurple(),
             timestamp=now,
         )
-        embed.set_footer(text="🔴 = currently in a voice channel")
+        embed.set_footer(text="🟢 = currently in a voice channel")
         await ctx.send(embed=embed)
 
     @commands.command(name="saveleaderboard", aliases=["savelb", "slb"])
