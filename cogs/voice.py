@@ -3,7 +3,7 @@ import os
 from datetime import datetime, timezone
 import json
 import discord
-
+import asyncio
 
 TRUSTED_USERS = set(
     int(uid.strip())
@@ -252,6 +252,11 @@ class Voice(commands.Cog):
                         already_in_vc += 1
         print(f"📡 Found {already_in_vc} member(s) already in voice channels")
         print(f"💾 Loaded totals for {len(voice_totals)} member(s)")
+
+        while True:
+            await asyncio.sleep(60)
+            vclb_len = checkpoint_all()
+            print(f"⏱️✅ Saved the voice leaderboard. (voicesessions {vclb_len})")
 
 async def setup(bot):
     await bot.add_cog(Voice(bot))
