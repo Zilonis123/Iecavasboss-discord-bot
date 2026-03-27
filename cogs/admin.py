@@ -8,7 +8,7 @@ class Admin(commands.Cog):
 
     @commands.command(name="clear", aliases=["purge"])
     @commands.has_permissions(manage_messages=True)
-    async def clear(ctx, amount: int = 5):
+    async def clear(self, ctx, amount: int = 5):
         if amount < 1 or amount > 100:
             await ctx.send("❌ Iesmēre man ziņu skaitu cik man izdēst no 1 līdz 100.")
             return

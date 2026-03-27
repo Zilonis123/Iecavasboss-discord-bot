@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-import os
+import os, sys  
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -45,6 +45,7 @@ async def load_cogs():
                 print(f"✅ Succesfully loaded {filename} cog")
             except:
                 print(f"❌ Couldn't load {filename} cog")
+                print(f"ERROR: {sys.exc_info()[0]}")
     
 
 if __name__ == "__main__":
