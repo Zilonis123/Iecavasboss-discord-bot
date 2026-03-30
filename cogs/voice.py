@@ -3,7 +3,6 @@ import os
 from datetime import datetime, timezone
 import json
 import discord
-import asyncio
 from zoneinfo import ZoneInfo
 
 TRUSTED_USERS = set(
@@ -87,7 +86,7 @@ def _update_streak(user_id: int) -> None:
     yesterday = (datetime.now(TIMEZONE).date() - timedelta(days=1)).isoformat()
  
     if entry["last_day"] == yesterday:
-        print(f"{user_id} is on a {entry["streak"]+1} streak")
+        print(f"{user_id} is on a {entry['streak']+1} streak")
         entry["streak"] += 1       # continued streak
     else:
         entry["streak"] = 1        # streak broken or first ever day
