@@ -51,7 +51,7 @@ class General(commands.Cog):
     
         try:
             with contextlib.redirect_stdout(stdout_buf), contextlib.redirect_stderr(stderr_buf):
-                exec(compile(code, "<discord>", "exec"), {"bot": bot, "ctx": ctx, "discord": discord})
+                exec(compile(code, "<discord>", "exec"), {"bot": self.bot, "ctx": ctx, "discord": discord})
             output = stdout_buf.getvalue()
             error  = stderr_buf.getvalue()
         except Exception as e:
